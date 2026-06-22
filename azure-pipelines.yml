@@ -15,13 +15,14 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-
 - task: PublishCodeCoverageResults@2
   inputs:
     summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml" # Path to summary files
     reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco" # Path to report directory
     failIfCoverageEmpty: true # Fail if code coverage results are missing
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
